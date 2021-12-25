@@ -31,5 +31,5 @@
     "import/extensions": "off",
     "react/destructuring-assignment": "off"
   },
-  "ignorePatterns": ["dist/", "build/"]
+  "ignorePatterns": ["dist/", "build/", "server/"]
 }
