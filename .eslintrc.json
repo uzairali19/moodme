@@ -18,7 +18,17 @@
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "react/function-component-definition": "off",
+    "react/no-unused-state": "off",
+    "react/prop-types": "off",
+    "react/self-closing-comp": "off",
+    "object-shorthand": "off",
+    "no-nested-ternary": "off",
+    "no-underscore-dangle": "off",
+    "default-param-last": "off",
+    "import/extensions": "off",
+    "react/destructuring-assignment": "off"
   },
   "ignorePatterns": ["dist/", "build/"]
 }
