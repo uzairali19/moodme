@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Mood Me Trail App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> This app uses React and Redux, Along with React Router for data manipulation from a couple of web services. It is a SPA with the store object attached to the index.js component used by all of the components to make use and manupulate the data. It uses MongoDB and express.js to connect database to the front-end of the application.
 
-## Available Scripts
+## Built With
 
-In the project directory, you can run:
+- React
+- React Router Dom
+- Redux
+- Node.js
+- Express.js
+- Axios
+- MongoDB
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To get a local copy up and running follow these simple example steps.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Setup
 
-### `npm test`
+Run
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+# To clone the git repositories
+git clone https://github.com/uzairali19/moodme.git
 
-### `npm run build`
+# To install front-end dependencies
+cd client
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# To install back-end dependencies
+cd server
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# To run development
+npm run start #(seperately on both directories)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# To build the project
+npm run build #(seperately on both directories)
+```
 
-### `npm run eject`
+### Run tests
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+For Linters(Client Side only):
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# To check for HTML errors
+npx hint .
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# To check for CSS errors
+npx stylelint "**/*.{css,scss}"
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# To check for Javascript errors
+npx eslint .
+```
 
-## Learn More
+## Authors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+👤 **Uzair Ali**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- GitHub: [@uzairali19](https://github.com/uzairali19)
+- Twitter: [@uzairali751](https://twitter.com/Uzairali751)
+- LinkedIn: [Uzair Ali](https://www.linkedin.com/in/uzair-ali-9641/)
 
-### Code Splitting
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Contributions, issues, and feature requests are welcome!
 
-### Analyzing the Bundle Size
+Feel free to check the [issues page](https://github.com/uzairali19/moodme/issues/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Show your support
 
-### Making a Progressive Web App
+Give a ⭐️ if you like this project!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📝 License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is [MIT](./MIT.md) licensed.
