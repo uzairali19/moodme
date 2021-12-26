@@ -1,5 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getMoods } from './redux/actions/moods';
+import moods from './assets/images/Moods.png';
+import Navbar from './Navbar';
 
-const App = () => <h1>Hello World!</h1>;
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMoods());
+  }, []);
+
+  return (
+    <>
+      <Navbar />
+    </>
+  );
+};
 
 export default App;

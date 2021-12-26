@@ -29,7 +29,10 @@
     "no-underscore-dangle": "off",
     "default-param-last": "off",
     "import/extensions": "off",
-    "react/destructuring-assignment": "off"
+    "react/destructuring-assignment": "off",
+    "no-unused-vars": "off",
+    "object-curly-newline": "off",
+    "import/prefer-default-export": "off"
   },
   "ignorePatterns": ["dist/", "build/", "server/"]
 }
