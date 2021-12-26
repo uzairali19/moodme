@@ -11,7 +11,12 @@ export const getMoods = async (req, res) => {
 };
 
 export const createMoods = (req, res) => {
-  const body = req.body;
+  const mood = req.body;
+  const newMood = new Moods(mood);
   try {
-  } catch (error) {}
+    await newMood.save();
+    res.status(201).json(newMood);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
 };

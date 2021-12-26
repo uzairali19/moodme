@@ -4,23 +4,26 @@ const Schema = mongoose.Schema;
 
 const moodSchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
-    rating: {
-      type: Number,
-      min: 1,
-      max: 5,
-      required: true,
-    },
-    comment: {
+    description: {
       type: String,
       required: true,
+    },
+    mood: {
+      type: String,
+      required: true,
+    },
+    selectImage: {
+      type: String,
     },
     author: {
       type: String,
-      required: true,
+    },
+    likes: {
+      type: Number,
     },
   },
   {
