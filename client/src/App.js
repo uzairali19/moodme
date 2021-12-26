@@ -15,8 +15,8 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Moods />
       <Form />
+      <Moods />
     </>
   );
 };

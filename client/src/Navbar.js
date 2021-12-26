@@ -153,7 +153,7 @@ export default function Navbar() {
             component="div"
             sx={{ display: { xs: 'block', sm: 'block' } }}
           >
-            Moods
+            MoodyLogs
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

@@ -9,3 +9,13 @@ export const getMoods = () => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const createMood = (mood) => async (dispatch) => {
+  try {
+    const { data } = await api.createMood(mood);
+    const action = { type: 'POST_MOOD', payload: data };
+    dispatch(action);
+  } catch (error) {
+    console.log(error);
+  }
+};

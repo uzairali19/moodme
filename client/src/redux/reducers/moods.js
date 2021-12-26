@@ -10,7 +10,7 @@ const moodsReducer = (state = initialState, action) => {
     case GET_MOODS:
       return action.payload;
     case POST_MOODS:
-      return state;
+      return [...state, action.payload];
     default:
       return state;
   }

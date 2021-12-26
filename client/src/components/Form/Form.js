@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import {
-  Paper,
   TextField,
   Typography,
   Autocomplete,
-  CircularProgress,
+  Button,
+  Box,
+  Container,
 } from '@mui/material';
-// import { useSelector } from 'react-redux';
+import FileBase from 'react-file-base64';
+import { useDispatch } from 'react-redux';
+import { createMood } from '../../redux/actions/moods';
 // import useStyles from './styles';
 
 const Form = () => {
@@ -16,9 +19,9 @@ const Form = () => {
     mood: '',
     selectImage: '',
   });
-  //   const classes = useStyles();
 
-  const handleSubmit = () => {};
+  const dispatch = useDispatch();
+  //   const classes = useStyles();
 
   const fetchMoodData = (e) => {
     switch (e.target.name) {
@@ -34,41 +37,29 @@ const Form = () => {
           description: e.target.value,
         });
         break;
-      case 'mood':
-        setMoodData({
-          ...moodData,
-          mood: e.target.value,
-        });
-        break;
-      case 'selectImage':
-        setMoodData({
-          ...moodData,
-          selectImage: e.target.value,
-        });
-        break;
       default:
         break;
     }
   };
 
   const moodsList = [
-    { label: 'Cheerful' },
-    { label: 'Reflective' },
-    { label: 'Gloomy' },
-    { label: 'Humorous' },
-    { label: 'Melancholy' },
-    { label: 'Idyllic' },
-    { label: 'Whimsical' },
-    { label: 'Romantic' },
-    { label: 'Mysterious' },
-    { label: 'Ominous' },
-    { label: 'Calm' },
-    { label: 'Lighthearted' },
-    { label: 'Hopeful' },
-    { label: 'Angry' },
-    { label: 'Fearful' },
-    { label: 'Tense' },
-    { label: 'Lonely' },
+    'Cheerful',
+    'Reflective',
+    'Gloomy',
+    'Humorous',
+    'Melancholy',
+    'Idyllic',
+    'Whimsical',
+    'Romantic',
+    'Mysterious',
+    'Ominous',
+    'Calm',
+    'Lighthearted',
+    'Hopeful',
+    'Angry',
+    'Fearful',
+    'Tense',
+    'Lonely',
   ];
 
   const selectMood = (
@@ -77,59 +68,92 @@ const Form = () => {
       id="combo-box-demo"
       options={moodsList}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Movie" />}
+      value={moodData.mood}
+      onChange={(e, v) => {
+        setMoodData({ ...moodData, mood: v });
+      }}
+      renderInput={(params) => (
+        <TextField {...params} label="Choose your Mood" />
+      )}
     />
   );
 
-  //   console.log(moodData);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createMood(moodData));
+  };
+
+  const clear = () => {};
+
+  console.log(moodData);
 
   return (
-    <Paper>
-      <form
-        autoComplete="off"
-        noValidate
-        // className={classes.form}
-        onSubmit={handleSubmit}
-      >
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{ display: { xs: 'block', sm: 'block' } }}
+    <Box component="div">
+      <Container fixed>
+        <form
+          autoComplete="off"
+          noValidate
+          // className={classes.form}
+          onSubmit={handleSubmit}
         >
-          Creating a mood
-        </Typography>
-        <TextField
-          name="title"
-          variant="outlined"
-          label="Title"
-          value={moodData.title}
-          onChange={fetchMoodData}
-        />
-        <TextField
-          name="description"
-          variant="outlined"
-          label="Description"
-          value={moodData.description}
-          onChange={fetchMoodData}
-        />
-        {/* <TextField
-          name="mood"
-          variant="outlined"
-          label="Mood"
-          value={moodData.mood}
-          onChange={fetchMoodData}
-        /> */}
-        {selectMood}
-        <TextField
-          name="selectImage"
-          variant="outlined"
-          label="Select Image"
-          value={moodData.selectImage}
-          onChange={fetchMoodData}
-        />
-      </form>
-    </Paper>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: 'block', sm: 'block' } }}
+          >
+            Creating a mood
+          </Typography>
+          <TextField
+            name="title"
+            variant="outlined"
+            label="Title"
+            value={moodData.title}
+            onChange={fetchMoodData}
+            fullWidth
+          />
+          <TextField
+            name="description"
+            variant="outlined"
+            label="Description"
+            value={moodData.description}
+            onChange={fetchMoodData}
+            fullWidth
+          />
+          {selectMood}
+          <div>
+            <FileBase
+              type="file"
+              multiple={false}
+              onDone={({ base64 }) => {
+                setMoodData({ ...moodData, selectImage: base64 });
+              }}
+              fullWidth
+            />
+          </div>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            type="submit"
+            fullWidth
+            onClick={handleSubmit}
+          >
+            Send Mood
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="small"
+            type="submit"
+            onClick={clear}
+            fullWidth
+          >
+            Clear Mood
+          </Button>
+        </form>
+      </Container>
+    </Box>
   );
 };
 

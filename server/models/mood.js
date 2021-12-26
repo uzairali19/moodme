@@ -19,9 +19,6 @@ const moodSchema = new Schema(
     selectImage: {
       type: String,
     },
-    author: {
-      type: String,
-    },
     likes: {
       type: Number,
     },
