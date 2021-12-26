@@ -8,7 +8,7 @@ const initialState = [];
 const moodsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_MOODS:
-      return state;
+      return action.payload;
     case POST_MOODS:
       return state;
     default:

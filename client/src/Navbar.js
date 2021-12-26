@@ -12,6 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import makeStyles from './styles';
+import moodLogo from './assets/images/Moods.png';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -152,7 +153,7 @@ export default function Navbar() {
             component="div"
             sx={{ display: { xs: 'block', sm: 'block' } }}
           >
-            Moods Me
+            Moods
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
