@@ -1,13 +1,34 @@
 import mongoose from 'mongoose';
 
-const moodsSchema = mongoose.Schema({
-  mood: String,
-  createdAt: {
-    type: Date,
-    default: new Date(),
+const Schema = mongoose.Schema;
+
+const moodSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    rating: {
+      type: Number,
+      min: 1,
+      max: 5,
+      required: true,
+    },
+    comment: {
+      type: String,
+      required: true,
+    },
+    author: {
+      type: String,
+      required: true,
+    },
   },
-});
+  {
+    timestamps: true,
+    usePushEach: true,
+  },
+);
 
-const Mood = mongoose.model('Mood', moodsSchema);
+var Moods = mongoose.model('Mood', moodSchema);
 
-export default Mood;
+export default Moods;
