@@ -1,6 +1,6 @@
 # Mood Me Trail App
 
-> This app uses React and Redux, Along with React Router for data manipulation from a couple of web services. It is a SPA with the store object attached to the index.js component used by all of the components to make use and manupulate the data. It uses MongoDB and express.js to connect database to the front-end of the application.
+> This app uses React and Redux, Along with React Router for data manipulation from a couple of web services. It is a SPA with the store object attached to the index.js component, used by all of the components to make use and manupulate the data. It uses MongoDB and Express.js to connect database to the front-end of the application.
 
 ## Built With
 
@@ -11,6 +11,13 @@
 - Express.js
 - Axios
 - MongoDB
+
+# Overview
+
+![Main Screenshot](screenshot.png)
+![Form Screenshot](screenshot1.png)
+![Search Screenshot](screenshot2.png)
+![Explainer Screenshot](screenshot3.png)
 
 ## Getting Started
 
