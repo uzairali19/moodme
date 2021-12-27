@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Moods from '../models/mood.js';
 
 export const getMoods = async (req, res) => {
@@ -19,4 +20,31 @@ export const createMoods = async (req, res) => {
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
+};
+
+export const deleteMood = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send('No Mood With the Id');
+
+  await Moods.findByIdAndRemove(id);
+
+  res.json({ message: 'Mood Deleted Successfully' });
+};
+
+export const likeMood = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send('No Mood With the Id');
+
+  const mood = await Moods.findById(id);
+  const updatedMood = await Moods.findByIdAndUpdate(
+    id,
+    { likeCount: mood.likes + 1 },
+    { new: true },
+  );
+
+  res.json(updatedMood);
 };

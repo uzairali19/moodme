@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   TextField,
   Typography,
@@ -6,11 +6,12 @@ import {
   Button,
   Box,
   Container,
+  CssBaseline,
 } from '@mui/material';
 import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
 import { createMood } from '../../redux/actions/moods';
-// import useStyles from './styles';
+import makeStyles from './styles';
 
 const Form = () => {
   const [moodData, setMoodData] = useState({
@@ -20,8 +21,17 @@ const Form = () => {
     selectImage: '',
   });
 
+  const clear = () => {
+    setMoodData({
+      title: '',
+      description: '',
+      mood: '',
+      selectImage: '',
+    });
+  };
+
   const dispatch = useDispatch();
-  //   const classes = useStyles();
+  const classes = makeStyles();
 
   const fetchMoodData = (e) => {
     switch (e.target.name) {
@@ -64,6 +74,7 @@ const Form = () => {
 
   const selectMood = (
     <Autocomplete
+      className={classes.inputDiv}
       disablePortal
       id="combo-box-demo"
       options={moodsList}
@@ -73,7 +84,7 @@ const Form = () => {
         setMoodData({ ...moodData, mood: v });
       }}
       renderInput={(params) => (
-        <TextField {...params} label="Choose your Mood" />
+        <TextField {...params} label="Choose Your Mood" />
       )}
     />
   );
@@ -81,14 +92,14 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createMood(moodData));
+    clear();
   };
-
-  const clear = () => {};
 
   console.log(moodData);
 
   return (
-    <Box component="div">
+    <Box className={classes.box} component="div">
+      <CssBaseline />
       <Container fixed>
         <form
           autoComplete="off"
@@ -97,32 +108,39 @@ const Form = () => {
           onSubmit={handleSubmit}
         >
           <Typography
+            className={classes.heading}
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: 'block', sm: 'block' } }}
+            align="center"
           >
-            Creating a mood
+            Create a mood
           </Typography>
+
           <TextField
+            className={classes.inputDiv}
             name="title"
             variant="outlined"
-            label="Title"
+            label="Mood Title"
             value={moodData.title}
             onChange={fetchMoodData}
             fullWidth
           />
           <TextField
+            className={`${classes.inputDiv} ${classes.description}`}
             name="description"
             variant="outlined"
-            label="Description"
+            label="Explain your mood...."
             value={moodData.description}
             onChange={fetchMoodData}
             fullWidth
           />
           {selectMood}
-          <div>
+          <div className={classes.image}>
+            <div>Upload Your Image</div>
             <FileBase
+              id="fileSelector"
               type="file"
               multiple={false}
               onDone={({ base64 }) => {
@@ -132,22 +150,22 @@ const Form = () => {
             />
           </div>
           <Button
+            className={classes.send}
             variant="contained"
             color="primary"
             size="large"
             type="submit"
-            fullWidth
             onClick={handleSubmit}
           >
             Send Mood
           </Button>
           <Button
+            className={classes.clear}
             variant="contained"
             color="secondary"
             size="small"
             type="submit"
             onClick={clear}
-            fullWidth
           >
             Clear Mood
           </Button>

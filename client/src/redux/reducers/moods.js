@@ -1,7 +1,4 @@
-const GET_MOODS = 'GET_MOODS';
-const POST_MOODS = 'POST_MOODS';
-const PUT_MOOD = 'PUT_MOOD';
-const DELETE_MOOD = 'PUT_MOOD';
+import { GET_MOODS, POST_MOODS, DELETE_MOOD, LIKE_MOOD } from '../types';
 
 const initialState = [];
 
@@ -11,6 +8,12 @@ const moodsReducer = (state = initialState, action) => {
       return action.payload;
     case POST_MOODS:
       return [...state, action.payload];
+    case DELETE_MOOD:
+      return state.filter((mood) => mood._id !== action.payload);
+    case LIKE_MOOD:
+      return state.map((mood) =>
+        mood._id === action.payload._id ? action.payload : mood,
+      );
     default:
       return state;
   }

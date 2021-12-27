@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -77,6 +78,8 @@ export default function Navbar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const classes = makeStyles();
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -116,17 +119,16 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
+      <MenuItem>
+        <Typography
+          className={classes.create}
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{ display: { xs: 'block', sm: 'block' } }}
         >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
+          <Link to="/create">Create Mood</Link>
+        </Typography>
       </MenuItem>
       <MenuItem>
         <Search>
@@ -142,21 +144,30 @@ export default function Navbar() {
     </Menu>
   );
 
-  const classes = makeStyles();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <Typography
+            className={classes.logo}
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: 'block', sm: 'block' } }}
           >
-            MoodyLogs
+            <Link to="/">MoodyLogs</Link>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Typography
+              className={classes.create}
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: 'block', sm: 'block' } }}
+            >
+              <Link to="/create">Create Mood</Link>
+            </Typography>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -166,17 +177,6 @@ export default function Navbar() {
                 inputProps={{ 'aria-label': 'search' }}
               />
             </Search>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton

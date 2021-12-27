@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
 import { getMoods } from './redux/actions/moods';
 import Navbar from './Navbar';
 import Moods from './components/Moods/Moods';
@@ -10,13 +11,15 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getMoods());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <Navbar />
-      <Form />
-      <Moods />
+      <Routes>
+        <Route path="/" element={<Moods />} />
+        <Route path="/create" element={<Form />} />
+      </Routes>
     </>
   );
 };

@@ -33,7 +33,9 @@
     "no-unused-vars": "off",
     "object-curly-newline": "off",
     "import/prefer-default-export": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-wrap-multilines": "off",
+    "implicit-arrow-linebreak": "off"
   },
   "ignorePatterns": ["dist/", "build/", "server/"]
 }
