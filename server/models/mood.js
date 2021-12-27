@@ -21,6 +21,7 @@ const moodSchema = new Schema(
     },
     likes: {
       type: Number,
+      default: 0,
     },
   },
   {

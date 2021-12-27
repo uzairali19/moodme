@@ -4,22 +4,30 @@ import { useSelector } from 'react-redux';
 import Mood from './Mood/Mood';
 import useStyles from './styles';
 
-const Moods = () => {
+const Moods = ({ searchTerm }) => {
   const moods = useSelector((state) => state.moodsReducer);
   const classes = useStyles();
   return (
     <>
       <Container className={classes.container}>
         <div className={classes.moodLayout}>
-          {moods.map((mood) => {
-            const moodId = mood._id;
+          {moods
+            .filter((mood) => {
+              if (searchTerm === '') {
+                return mood;
+              } else if (mood.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+                return mood;
+              }
+            })
+            .map((mood) => {
+              const moodId = mood._id;
 
-            return (
-              <div key={moodId} className={classes.mood}>
-                <Mood moodList={mood} />
-              </div>
-            );
-          })}
+              return (
+                <div key={moodId} className={classes.mood}>
+                  <Mood moodList={mood} />
+                </div>
+              );
+            })}
         </div>
       </Container>
     </>

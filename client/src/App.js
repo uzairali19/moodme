@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { getMoods } from './redux/actions/moods';
@@ -7,6 +7,7 @@ import Moods from './components/Moods/Moods';
 import Form from './components/Form/Form';
 
 const App = () => {
+  const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,9 +16,9 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Routes>
-        <Route path="/" element={<Moods />} />
+        <Route path="/" element={<Moods searchTerm={searchTerm} />} />
         <Route path="/create" element={<Form />} />
       </Routes>
     </>

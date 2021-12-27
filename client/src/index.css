@@ -7,3 +7,18 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
+
+.like {
+  display: flex;
+  gap: 10px;
+}
+
+.action-list {
+  justify-content: space-between;
+}
+
+.mood-tile {
+  font-style: italic;
+  font-weight: 800 !important;
+  margin-bottom: 10px !important;
+}

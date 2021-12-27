@@ -13,7 +13,7 @@ export const getMoods = async (req, res) => {
 
 export const createMoods = async (req, res) => {
   const { title, description, mood, selectImage } = req.body;
-  const newMood = new Moods({ title, description, mood, selectImage });
+  const newMood = new Moods({ title, description, mood, selectImage, likes });
   try {
     await newMood.save();
     res.status(201).json(newMood);
@@ -42,7 +42,7 @@ export const likeMood = async (req, res) => {
   const mood = await Moods.findById(id);
   const updatedMood = await Moods.findByIdAndUpdate(
     id,
-    { likeCount: mood.likes + 1 },
+    { likes: mood.likes + 1 },
     { new: true },
   );
 

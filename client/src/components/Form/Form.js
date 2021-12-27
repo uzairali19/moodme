@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  TextField,
-  Typography,
-  Autocomplete,
-  Button,
-  Box,
-  Container,
-  CssBaseline,
-} from '@mui/material';
+import { TextField, Typography, Autocomplete, Button, Box, Container, CssBaseline } from '@mui/material';
 import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
 import { createMood } from '../../redux/actions/moods';
@@ -83,9 +75,7 @@ const Form = () => {
       onChange={(e, v) => {
         setMoodData({ ...moodData, mood: v });
       }}
-      renderInput={(params) => (
-        <TextField {...params} label="Choose Your Mood" />
-      )}
+      renderInput={(params) => <TextField {...params} label="Choose Your Mood" />}
     />
   );
 
@@ -94,8 +84,6 @@ const Form = () => {
     dispatch(createMood(moodData));
     clear();
   };
-
-  console.log(moodData);
 
   return (
     <Box className={classes.box} component="div">
